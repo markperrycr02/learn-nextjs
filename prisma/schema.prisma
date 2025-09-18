@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model BlogPost {
+  id          String   @id @default(uuid()) @map("_id")
+  title       String
+  content     String
+  imageUrl    String
+  authorID    String
+  authorName  String
+  authorImage String
+  createdAt   DateTime @default(now())
+  updateAt    DateTime @updatedAt
+}
+
+model Customer {
+  id      String  @id @default(uuid()) @map("_id")
+  name    String
+  email   String  @unique
+  phone   String?
+  street  String?
+  city    String?
+  state   String?
+  zipCode String?
+  country String?
+
+  Address Address?
+}
+
+model Address {
+  id         String    @id @default(uuid()) @map("_id")
+  street     String
+  city       String
+  state      String
+  zipCode    String
+  country    String
+  userId     Int       @unique // Ensures one-to-one
+  user       Customer? @relation(fields: [customerId], references: [id])
+  customerId String?   @unique
+}
+
+model Category {
+  id          String  @id @default(uuid()) @map("_id")
+  name        String
+  description String
+  Asset       Asset[]
+}
+
+model Asset {
+  id         String    @id @default(uuid()) @map("_id")
+  model      String
+  serialNo   String
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+}
