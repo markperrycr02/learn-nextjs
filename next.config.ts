@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
         port: "3000",
       },
       {
-        hostname: "https://learn-nextjs-m2dc.vercel.app",
+        hostname: "learn-nextjs-m2dc.vercel.app",
         protocol: "https",
         port: "",
       },
