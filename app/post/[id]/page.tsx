@@ -53,9 +53,6 @@ export default async function IdPage({ params }: { params: Params }) {
               day: "numeric",
             }).format(data.createdAt)}
           </p>
-          <div className="flex w-100 flex-1 justify-end">
-            <DeletePostButton />
-          </div>
         </div>
       </div>
       <div className="relative h-[400px] w-full mb-8 overflow-hidden rounded-lg">
@@ -71,6 +68,9 @@ export default async function IdPage({ params }: { params: Params }) {
           <p className="text-gray-700">{data.content}</p>
         </CardContent>
       </Card>
+      <div className="flex w-100 flex-1 justify-end">
+        <DeletePostButton />
+      </div>
     </div>
   );
 }
