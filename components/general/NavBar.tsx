@@ -45,10 +45,6 @@ export default async function NavBar() {
       ) : (
         <div className="flex items-center gap-4">
           <LoginLink className={buttonVariants()}>Login</LoginLink>
-
-          {/* <RegisterLink className={buttonVariants({ variant: "secondary" })}>
-            Sign up
-          </RegisterLink> */}
         </div>
       )}
     </nav>
