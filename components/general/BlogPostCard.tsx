@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button, buttonVariants } from "../ui/button";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import DeletePostButton from "./DeletePostButton";
 
 interface IappProps {
   data: {

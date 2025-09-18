@@ -27,3 +27,7 @@ export async function handleSubmission(formData: FormData) {
 
   return redirect("/dashboard");
 }
+
+// export async function deleteSinglePost(id: any) {
+//   console.log(`delete post ${id}`);
+// }
