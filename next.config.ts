@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
         port: "3000",
       },
       {
+        hostname: "learn-nextjs-m2dc.vercel.app",
+        protocol: "http",
+        port: "",
+      },
+      {
         hostname: "cdn.pixabay.com",
         protocol: "https",
         port: "",
