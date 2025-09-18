@@ -6,14 +6,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { BlogpostCard } from "@/components/general/BlogPostCard";
 
 export async function getData(userId: string) {
-  const data = await prisma.blogPost.findMany({
-    where: {
-      authorID: userId,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const data = await prisma.blogPost.findMany({});
 
   return data;
 }
