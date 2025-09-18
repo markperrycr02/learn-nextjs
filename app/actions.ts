@@ -19,7 +19,7 @@ export async function handleSubmission(formData: FormData) {
       title: title as string,
       content: content as string,
       imageUrl: url as string,
-      authorID: user?.id as any,
+      authorID: user.id as string,
       authorImage: user?.picture as string,
       authorName: user?.given_name as string,
     },
