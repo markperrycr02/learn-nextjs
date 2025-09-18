@@ -5,7 +5,7 @@ import prisma from "../utils/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { BlogpostCard } from "@/components/general/BlogPostCard";
 
-export async function getData(userId: any) {
+export async function getData(userId: string) {
   const data = await prisma.blogPost.findMany({
     where: {
       authorID: userId,
@@ -21,7 +21,7 @@ export async function getData(userId: any) {
 export default async function DashboardRoute() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const data = await getData(user?.id);
+  const data = await getData(user!.id);
   return (
     <div className="py-8">
       <div className="flex items-center justify-between mb-4">
