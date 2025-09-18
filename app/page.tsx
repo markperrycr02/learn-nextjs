@@ -1,11 +1,9 @@
-// import { PrismaClient } from "@prisma/client";
 import { BlogpostCard } from "@/components/general/BlogPostCard";
 import prisma from "./utils/db";
 import { Suspense } from "react";
 import { BlogPostsGrid } from "./post/[id]/page";
 
 async function getData() {
-  // await new Promise((resolve) => setTimeout(resolve, 2000));
   const data = await prisma.blogPost.findMany({
     select: {
       title: true,

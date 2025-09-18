@@ -6,8 +6,6 @@ declare global {
 
 let prisma: PrismaClient;
 
-// Check if we are in development and if the global Prisma instance exists
-// This prevents multiple instances of Prisma Client in development hot reloading
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient();
 } else {
