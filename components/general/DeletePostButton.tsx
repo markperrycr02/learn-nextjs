@@ -2,7 +2,7 @@
 // import { deleteSinglePost } from "@/app/actions";
 import { Button } from "../ui/button";
 
-export default function DeletePostButton(postId: any) {
+export default function DeletePostButton() {
   return (
     <Button
       // onClick={() => deleteSinglePost(postId)}

@@ -54,7 +54,7 @@ export default async function IdPage({ params }: { params: Params }) {
             }).format(data.createdAt)}
           </p>
           <div className="flex w-100 flex-1 justify-end">
-            <DeletePostButton postId={"DDDD"} />
+            <DeletePostButton />
           </div>
         </div>
       </div>
