@@ -15,7 +15,7 @@ export default async function NavBar() {
             Blog<span className="text-blue-500">Mark</span>
           </h1>
         </Link>
-        <div className="sm:flex item-center gap-6">
+        <div className="hidden sm:flex item-center gap-6">
           <Link
             className="text-sm font-medium hover:text-blue-500 transition-colors"
             href="/"
