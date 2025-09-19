@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface IappProps {
   data: {
@@ -17,8 +16,6 @@ interface IappProps {
 }
 
 export async function BlogpostCard({ data }: IappProps) {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
   return (
     <>
       <div className="group relative overflow-hidden rounded-lg border-gray-100 bg-white shadow-md transition-all hover:shadow-lg">
