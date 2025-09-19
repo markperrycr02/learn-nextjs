@@ -68,7 +68,7 @@ export default async function IdPage({ params }: { params: Params }) {
           <p className="text-gray-700">{data.content}</p>
         </CardContent>
       </Card>
-      <div className="flex justify-end">
+      <div className="flex justify-end mt-2">
         <DeletePostButton />
       </div>
     </div>
