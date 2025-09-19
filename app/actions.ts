@@ -2,6 +2,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import prisma from "./utils/db";
+import { revalidatePath } from "next/cache";
 
 export async function handleSubmission(formData: FormData) {
   const title = formData.get("title");
@@ -24,6 +25,8 @@ export async function handleSubmission(formData: FormData) {
       authorName: user?.given_name as string,
     },
   });
+
+  revalidatePath("/");
 
   return redirect("/dashboard");
 }

@@ -3,6 +3,8 @@ import prisma from "./utils/db";
 import { Suspense } from "react";
 import { BlogPostsGrid } from "./post/[id]/page";
 
+export const revalidate = 600;
+
 async function getData() {
   const data = await prisma.blogPost.findMany({
     select: {
