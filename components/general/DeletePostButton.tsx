@@ -6,7 +6,7 @@ export default function DeletePostButton() {
   return (
     <Button
       // onClick={() => deleteSinglePost(postId)}
-      className="cursor-pointer text-rounded-sm"
+      className="cursor-pointer text-rounded-sm text-white"
       variant="destructive"
     >
       delete post

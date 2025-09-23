@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
         port: "",
       },
       {
+        hostname: "gravatar.com",
+        protocol: "https",
+        port: "",
+      },
+      {
         hostname: "cdn.pixabay.com",
         protocol: "https",
         port: "",
