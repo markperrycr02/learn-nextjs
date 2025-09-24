@@ -4,6 +4,14 @@ import { redirect } from "next/navigation";
 import prisma from "./utils/db";
 import { revalidatePath } from "next/cache";
 
+export async function deleteSinglePost(id: string) {
+  console.log("id in deleteSinglePost: ", id);
+}
+
+export async function editSinglePost(id: string) {
+  console.log("id in editinglePost: ", id);
+}
+
 export async function handleSubmission(formData: FormData) {
   const title = formData.get("title");
   const content = formData.get("content");

@@ -13,7 +13,7 @@ export default function NavBar() {
 
   return (
     <div>
-      <nav className="py-5 flex items-center justify-between">
+      <nav className="py-5 flex items-center justify-between" tabIndex={0}>
         <div className="flex items-center gap-6">
           <Link href="/">
             <h1 className="text-3xl font-semibold">
