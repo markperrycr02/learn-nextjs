@@ -6,7 +6,13 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import { buttonVariants } from "../ui/button";
-import { Sheet, SheetTrigger, SheetContent, SheetTitle } from "../ui/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetTitle,
+  SheetClose,
+} from "../ui/sheet";
 
 export default async function MobileNav() {
   const { getUser } = getKindeServerSession();
@@ -20,7 +26,7 @@ export default async function MobileNav() {
           </h1>
         </Link>
       </div>
-      <Sheet modal={false}>
+      <Sheet>
         <div className="flex items-center">
           <p className="flex mr-4 justify-center">{user?.given_name}</p>
           <SheetTrigger className={` buttonVariants({ variant: "ghost"}})`}>
@@ -31,30 +37,38 @@ export default async function MobileNav() {
           <SheetTitle></SheetTitle>
 
           <nav className="py-5 mt-10 flex flex-col items-center gap-5">
-            <Link
-              className="text-sm font-medium hover:text-blue-500 transition-colors"
-              href="/"
-            >
-              Home
-            </Link>
+            <SheetClose asChild>
+              <Link
+                className="text-sm font-medium hover:text-blue-500 transition-colors"
+                href="/"
+              >
+                Home
+              </Link>
+            </SheetClose>
+            <SheetClose asChild>
+              <Link
+                className="text-sm font-medium hover:text-blue-500 transition-colors"
+                href="/dashboard"
+              >
+                Dashboard
+              </Link>
+            </SheetClose>
 
-            <Link
-              className="text-sm font-medium hover:text-blue-500 transition-colors"
-              href="/dashboard"
-            >
-              Dashboard
-            </Link>
             {user ? (
               <div className="flex gap-4 items-center">
-                <LogoutLink
-                  className={buttonVariants({ variant: "secondary" })}
-                >
-                  Logout
-                </LogoutLink>
+                <SheetClose asChild>
+                  <LogoutLink
+                    className={buttonVariants({ variant: "secondary" })}
+                  >
+                    Logout
+                  </LogoutLink>
+                </SheetClose>
               </div>
             ) : (
               <div className="flex items-center gap-4">
-                <LoginLink className={buttonVariants()}>Login</LoginLink>
+                <SheetClose asChild>
+                  <LoginLink className={buttonVariants()}>Login</LoginLink>
+                </SheetClose>
               </div>
             )}
           </nav>
