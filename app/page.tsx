@@ -2,6 +2,7 @@ import { BlogpostCard } from "@/components/general/BlogPostCard";
 import prisma from "./utils/db";
 import { Suspense } from "react";
 import { BlogPostsGrid } from "./post/[id]/page";
+import MobileNav from "@/components/general/MobileNav";
 
 export const revalidate = 600;
 

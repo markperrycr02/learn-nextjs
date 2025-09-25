@@ -20,7 +20,7 @@ export default async function MobileNav() {
           </h1>
         </Link>
       </div>
-      <Sheet>
+      <Sheet modal={false}>
         <div className="flex items-center">
           <p className="flex mr-4 justify-center">{user?.given_name}</p>
           <SheetTrigger className={` buttonVariants({ variant: "ghost"}})`}>
