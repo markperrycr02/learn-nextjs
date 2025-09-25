@@ -12,7 +12,7 @@ export default async function MobileNav() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <div className="flex py-5 md:hidden ">
+    <div className="flex py-5 md:hidden">
       <div className="flex justify-start w-full">
         <Link href="/">
           <h1 className="text-3xl font-semibold">
