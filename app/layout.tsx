@@ -29,7 +29,7 @@ export default function RootLayout({
     <AuthProvider>
       <html lang="en">
         <body
-          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <NavBar />
           <MobileNav />
