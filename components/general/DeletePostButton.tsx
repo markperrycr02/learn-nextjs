@@ -10,7 +10,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 
@@ -32,17 +31,7 @@ export default function DeletePostButton(props: { id: string }) {
       >
         delete
       </Link>
-      <div className="text-gray-300">|</div>
-      <Link
-        onClick={(e) => {
-          editSinglePost(props.id);
-          e.preventDefault();
-        }}
-        className="cursor-pointer text-rounded-sm text-red-600 hover:text-red-800"
-        href="#"
-      >
-        edit
-      </Link>
+
       <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -54,7 +43,12 @@ export default function DeletePostButton(props: { id: string }) {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogAction
+              className="bg-red-500 hover:bg-red-400"
+              onClick={() => deleteSinglePost(props.id)}
+            >
+              Yes, delete it!
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import EditPostButton from "@/components/general/EditPostButton";
 
 async function getData(id: string) {
   const data = await prisma.blogPost.findUnique({
@@ -71,8 +72,9 @@ export default async function IdPage({ params }: { params: Params }) {
           <p className="text-gray-700">{data.content}</p>
         </CardContent>
       </Card>
-      <div className="flex justify-end mt-2">
+      <div className="flex justify-end mt-2 gap-2">
         {user?.id == data.authorID ? <DeletePostButton id={data.id} /> : null}
+        {user?.id == data.authorID ? <EditPostButton id={data.id} /> : null}
       </div>
     </div>
   );
