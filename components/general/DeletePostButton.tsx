@@ -1,15 +1,29 @@
 "use client";
 import Link from "next/link";
 import { deleteSinglePost, editSinglePost } from "@/app/actions";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useState } from "react";
 
 export default function DeletePostButton(props: { id: string }) {
+  const [isAlertDialogOpen, setIsAlertDialogOpen] = useState(false);
+
   return (
     <div className="flex gap-2">
       <Link
         onClick={(e) => {
           {
-            confirm("Are you sure you want to delete this post?") &&
-              deleteSinglePost(props.id);
+            setIsAlertDialogOpen(true);
+            // deleteSinglePost(props.id);
             e.preventDefault();
           }
         }}
@@ -29,6 +43,21 @@ export default function DeletePostButton(props: { id: string }) {
       >
         edit
       </Link>
+      <AlertDialog open={isAlertDialogOpen} onOpenChange={setIsAlertDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
