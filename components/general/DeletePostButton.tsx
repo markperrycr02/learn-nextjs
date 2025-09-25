@@ -3,13 +3,13 @@ import Link from "next/link";
 import { deleteSinglePost, editSinglePost } from "@/app/actions";
 
 export default function DeletePostButton(props: { id: string }) {
-  console.log("props in DeletePostButton: ", props);
   return (
     <div className="flex gap-2">
       <Link
         onClick={(e) => {
           {
-            deleteSinglePost(props.id);
+            confirm("Are you sure you want to delete this post?") &&
+              deleteSinglePost(props.id);
             e.preventDefault();
           }
         }}

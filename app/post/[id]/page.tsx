@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 async function getData(id: string) {
   const data = await prisma.blogPost.findUnique({
@@ -25,6 +26,8 @@ type Params = Promise<{ id: string }>;
 export default async function IdPage({ params }: { params: Params }) {
   const { id } = await params;
   const data = await getData(id);
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
 
   return (
     <div className="max-w-full mx-auto py-8 px-4">
@@ -69,7 +72,7 @@ export default async function IdPage({ params }: { params: Params }) {
         </CardContent>
       </Card>
       <div className="flex justify-end mt-2">
-        <DeletePostButton id={data.id} />
+        {user?.id == data.authorID ? <DeletePostButton id={data.id} /> : null}
       </div>
     </div>
   );

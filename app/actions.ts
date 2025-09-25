@@ -5,12 +5,12 @@ import prisma from "./utils/db";
 import { revalidatePath } from "next/cache";
 
 export async function deleteSinglePost(id: string) {
-  console.log("id in deleteSinglePost: ", id);
+  await prisma.blogPost.delete({ where: { id: id } });
+  revalidatePath("/");
+  redirect("/dashboard");
 }
 
-export async function editSinglePost(id: string) {
-  console.log("id in editinglePost: ", id);
-}
+export async function editSinglePost(id: string) {}
 
 export async function handleSubmission(formData: FormData) {
   const title = formData.get("title");
