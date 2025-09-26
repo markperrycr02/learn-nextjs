@@ -11,10 +11,10 @@ import {
 
 export default function Alertit(props: {
   isAlertDialogOpen: boolean;
-  setIsAlertDialogOpen: any;
+  setIsAlertDialogOpen: (open: boolean) => void;
   title?: string;
   id: string;
-  serverAction: Function;
+  serverAction: (id: string) => void;
 }) {
   let title = props.title || "Are you absolutely sure?";
   return (
