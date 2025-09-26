@@ -10,7 +10,19 @@ export async function deleteSinglePost(id: string) {
   redirect("/dashboard");
 }
 
-export async function editSinglePost(id: string) {}
+export async function saveSinglePost(id: string, formData: FormData) {
+  await prisma.blogPost.update({
+    where: { id: id },
+    data: {
+      title: formData.get("title") as string,
+      content: formData.get("content") as string,
+      imageUrl: formData.get("url") as string,
+    },
+  });
+
+  revalidatePath("/");
+  redirect("/dashboard");
+}
 
 export async function handleSubmission(formData: FormData) {
   const title = formData.get("title");

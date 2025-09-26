@@ -31,52 +31,61 @@ export default async function IdPage({ params }: { params: Params }) {
   const user = await getUser();
 
   return (
-    <div className="max-w-full mx-auto py-8 px-4">
-      <Link className={buttonVariants({ variant: "secondary" })} href="/">
-        Back to posts
-      </Link>
-      <div className="mb-8 mt-6">
-        <h1 className="text-3xl font-bold tracking-tight mb-4">{data.title}</h1>
-        <div className="flex items-center space-x-4 w-full">
-          <div className="flex items-center space-x-2">
-            <div className="relative size-10 overflow-hidden rounded-full">
-              <Image
-                src={data.authorImage}
-                alt={data.authorName}
-                fill
-                className="object-cover"
-                priority
-              />
+    <>
+      <div className="max-w-full mx-auto py-8 px-4">
+        <Link className={buttonVariants({ variant: "secondary" })} href="/">
+          Back to posts
+        </Link>
+        <div className="mb-5 mt-6">
+          <h1 className="text-3xl font-bold tracking-tight mb-4">
+            {data.title}
+          </h1>
+          <div className="flex items-center space-x-4 w-full">
+            <div className="flex items-center space-x-2">
+              <div className="relative size-10 overflow-hidden rounded-full">
+                <Image
+                  src={data.authorImage}
+                  alt={data.authorName}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <p className="font-medium">{data.authorName}</p>
             </div>
-            <p className="font-medium">{data.authorName}</p>
+            <p className="text-sm text-gray-500">
+              {new Intl.DateTimeFormat("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }).format(data.createdAt)}
+            </p>
           </div>
-          <p className="text-sm text-gray-500">
-            {new Intl.DateTimeFormat("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }).format(data.createdAt)}
-          </p>
         </div>
+        <div className="">
+          {user?.id == data.authorID ? (
+            <div className="flex gap-2 mb-4">
+              <DeletePostButton id={data.id} />
+              <EditPostButton postId={data.id} />
+            </div>
+          ) : null}
+        </div>
+        <div className="relative h-[400px] w-full mb-8 overflow-hidden rounded-lg">
+          <Image
+            src={data.imageUrl}
+            alt={data.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <Card>
+          <CardContent>
+            <p className="text-gray-700">{data.content}</p>
+          </CardContent>
+        </Card>
       </div>
-      <div className="relative h-[400px] w-full mb-8 overflow-hidden rounded-lg">
-        <Image
-          src={data.imageUrl}
-          alt={data.title}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <Card>
-        <CardContent>
-          <p className="text-gray-700">{data.content}</p>
-        </CardContent>
-      </Card>
-      <div className="flex justify-end mt-2 gap-2">
-        {user?.id == data.authorID ? <DeletePostButton id={data.id} /> : null}
-        {user?.id == data.authorID ? <EditPostButton id={data.id} /> : null}
-      </div>
-    </div>
+    </>
   );
 }
 

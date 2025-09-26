@@ -1,17 +1,12 @@
-"use client";
-import { editSinglePost } from "@/app/actions";
 import Link from "next/link";
-function EditPostButton(props: { id: string }) {
+function EditPostButton(props: { postId: string }) {
+  console.log("props.id", props.postId.trim());
   return (
     <>
       <div className="text-gray-300">|</div>
       <Link
-        onClick={(e) => {
-          editSinglePost(props.id);
-          e.preventDefault();
-        }}
-        className="cursor-pointer text-rounded-sm text-red-600 hover:text-red-800"
-        href="#"
+        href={`/dashboard/edit/${props.postId}`}
+        className="cursor-pointer text-rounded-sm text-green-600 hover:text-green-500"
       >
         edit
       </Link>
