@@ -16,7 +16,7 @@ export default function Alertit(props: {
   id: string;
   serverAction: (id: string) => void;
 }) {
-  let title = props.title || "Are you absolutely sure?";
+  const title = props.title || "Are you absolutely sure?";
   return (
     <AlertDialog
       open={props.isAlertDialogOpen}
